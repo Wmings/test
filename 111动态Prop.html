@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>父向子传递数据</title>
+	<script src="https://cdn.jsdelivr.net/npm/vue"></script>
+	
+</head>
+<body>
+
+<DiV id="ex1">
+	<input type="text" v-model="parentMsg">
+	<br>
+	<child v-bind:my-message="parentMsg" v-bind:tt='msg2' class="aaaa"></child>
+</div>
+
+<script>
+/*Vue.component('my-component',{
+	template: '<div>A custom component!</div>'
+})*/
+var a = new Vue ({
+	el: '#ex1',
+	data: {
+			parentMsg:'this MSG is from parent',
+			msg2:'222',
+	},
+	components:{
+		'child':{
+			props: ['myMessage','tt'],
+			template : '<div class="bbb">{{myMessage + tt }}</div>',
+		}
+	}
+})
+console.log(a);
+</script>
+
+</body>
+</html>
